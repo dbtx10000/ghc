@@ -1,1 +1,0 @@
-ALTER TABLE t_questionnaire_record ADD (user_account varchar(40) not null comment '用户账号');
