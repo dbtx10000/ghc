@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="UserBindMapper" >
+  <resultMap id="BaseResultMap" type="com.alidao.users.entity.UserBind" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="account" property="account" jdbcType="VARCHAR" />
+    <result column="account_type" property="accountType" jdbcType="INTEGER" />
+    <result column="session_key" property="sessionKey" jdbcType="VARCHAR" />
+    <result column="create_user" property="createUser" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_user" property="updateUser" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="state" property="state" jdbcType="BIT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, user_id, account, account_type, session_key, create_user, create_time, update_user, 
+    update_time, state
+  </sql>
+  <sql id="Basic_Conditions" >
+  	<![CDATA[where state = true]]>
+    <if test="userId != null">and user_id = #{userId,jdbcType=VARCHAR}</if>
+    <if test="account != null">and account = #{account,jdbcType=VARCHAR}</if>
+    <if test="accountType != null">and account_type = #{accountType,jdbcType=INTEGER}</if>
+    <if test="sessionKey != null">and session_key = #{sessionKey,jdbcType=VARCHAR}</if>
+    <include refid="COMMON_SQL.QUERY"/>
+  </sql>
+  <select id="select" resultMap="BaseResultMap" parameterType="com.alidao.users.entity.UserBind" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_user_bind
+    <include refid="Basic_Conditions" />
+    limit 0,1
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_user_bind
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <update id="delete" parameterType="com.alidao.users.entity.UserBind" >
+    update t_user_bind set state = false
+    <include refid="Basic_Conditions" />
+  </update>
+  <update id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    update t_user_bind set state = false
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <insert id="insert" parameterType="com.alidao.users.entity.UserBind" >
+    insert into t_user_bind (id, user_id, account, 
+      account_type, session_key, create_user, 
+      create_time, update_user, update_time, 
+      state)
+    values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=VARCHAR}, #{account,jdbcType=VARCHAR}, 
+      #{accountType,jdbcType=INTEGER}, #{sessionKey,jdbcType=VARCHAR}, #{createUser,jdbcType=VARCHAR},
+      #{createTime,jdbcType=TIMESTAMP}, #{updateUser,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{state,jdbcType=BIT})
+    <selectKey keyProperty="id" resultType="java.lang.Long">
+      select last_insert_id()
+    </selectKey>
+  </insert>
+  <update id="update" parameterType="com.alidao.users.entity.UserBind" >
+    update t_user_bind
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null" >
+        account = #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="accountType != null" >
+        account_type = #{accountType,jdbcType=INTEGER},
+      </if>
+      <if test="sessionKey != null" >
+        session_key = #{sessionKey,jdbcType=VARCHAR},
+      </if>
+      <if test="createUser != null" >
+        create_user = #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUser != null" >
+        update_user = #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=BIT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="queryForCount" resultType="java.lang.Long" parameterType="java.util.Map" >
+    select count(*) from t_user_bind
+    <include refid="Basic_Conditions" />
+    <include refid="COMMON_SQL.FUZZY" />
+  </select>
+  <select id="queryForList" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_user_bind
+    <include refid="Basic_Conditions" />
+    <include refid="COMMON_SQL.FUZZY" />
+    <include refid="COMMON_SQL.LIMIT" />
+  </select>
+</mapper>

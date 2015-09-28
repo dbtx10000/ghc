@@ -1,0 +1,165 @@
+@charset="utf-8"
+*,h6{margin:0;padding:0;}
+a{text-decoration:none;-webkit-tap-highlight-color:rgba(0,0,0,0);/*点击无高亮边框*/}
+
+/*li{list-style:none;}*/
+html,body{width:100%;height:100%;font-family:"STHeiti","SimHei";overflow:hidden;}
+body,p,h4,ol{margin:0;padding:0;}
+.wrap{position:relative;top:0;left:0;width:100%;height:100%;overflow:hidden;}
+/*.bg{position:absolute;top:0;left:0;z-index:10;width:100%;height:100%;display:none}
+.bg img{width:100%}*/
+.content{position:absolute;top:0%;left:0;z-index:20;width:100%;height:100%;background:url(../images/signin/backgroundchange.png) center center no-repeat;background-size:cover;}
+.content .middel{width:100%;height:100%;}
+/*树*/
+.left,.bring{position:absolute;top:43%;left:3%;width:60%;z-index:21;}
+.left img{margin:0 auto;width:90%;height:auto;}
+.bring{top:0%;display:none}
+
+/*黑板*/
+.right{position:absolute;top:0%;left:3%;z-index:22;width:50%;height:30%;background:url(../images/signin/blackbordchange.png) center top no-repeat;background-size:100% 100%;}
+.right h6{margin:0;padding:0;text-align:center;margin-top:16%;font-size:15px;color:#b28e6d;line-height:20px}
+.right p{position:absolute;margin:0 auto;padding:12px;top:28%;font-size:11px;color:#b28e6d;line-height:20px;}
+@media screen and(max-width:320px){
+	.right p{line-height:12px}
+}
+@media screen and (min-width:323px) and (max-width:375px){
+	.right p{line-height:14px}
+}
+@media screen and (min-width:376px){
+	.right p{line-height:18px}
+}
+/*大象*/
+.elephant{position:absolute;z-index:28;width:100%;height:40%;top:17.5%;}
+.elephant a{position:relative;top:20%;float:right;width:40%;height:30%;font-size:14px;color:#fff;background:url(../images/signin/clickchange.png) center top no-repeat;background-size:40% auto;display:block;text-align:center;}
+.elephant a span{position:absolute;top:16%;left:50%;margin-left:-14px;}
+#ele_animate{position:absolute;top:47%;right:3%;width:55%;}
+#waterImg{position:absolute;top:39%;right:56%;width:34%;-webkit-transform:scale(0);transform:scale(0)}
+.fly a{display:none;}
+.nowater{position:absolute;top:26%;right:10%;padding:5px 10px;background:url(../images/signin/speak.png) center top no-repeat;line-height:40px;background-size:100% auto;text-align:center;font-size:14px;}
+
+
+/*规则*/
+.rules{position:fixed;bottom:-38%;width:100%;height:50%;background:url(../images/signin/rules.png) center top no-repeat;background-size:cover;}
+.rules .icon{margin:0 auto;margin-top:10px;width:100%;height:32px;background:url(../images/signin/arrow_up.png) center center no-repeat;background-size:16px auto;display:block;text-align:center;}
+.rules .icon:after{content:"上拉查看规则";padding-top:30px;font-size:14px;color:#fff;display:block;}
+.rules .icon.active{-webkit-transform:rotate(180deg);transform:rotate(180deg);}
+.rules .icon.active:after{content:""}
+.rules ol{margin:0 auto;margin-top:5px;width:76%;display:none;}
+.rules li{font-size:10px;color:#fff;line-height:150%}
+
+/*奖品*/
+.prise {position:absolute;top:0;left:0;z-index:30;width:100%;height:100%;background:rgba(0,0,0,0.6);display:none}
+.prise article{margin:0 auto;margin-top:50%;width:70%;min-height:10%;border:4px solid #ff6d2f;border-radius:10px;-webkit-border-radius:10px;background:#fff}
+.prise article:before{content:"";position:absolute;top:20%;left:50%;margin-left:-25%;width:50%;height:15%;background:url(../images/signin/title.png) center center no-repeat;background-size:70% auto;display:block;}
+.prise article p{padding:26px 10px 14px 10px;line-height:150%;text-align:center;font-size:18px;color:#ff6934;}
+.prise a{margin:0 auto;margin-top:15%;width:50%;height:40px;text-align:center;line-height:44px;color:#fff;display:block;background:#ff741b;border:3px solid #ff8638;border-radius:5px;-webkit-border-radius:5px;}
+
+.foot{position:absolute;top:0;left:0;width:100%;height:100%;}
+
+
+.music{display:none}
+
+/*动画*/
+.animated{-webkit-animation-duration:0.3s;animation-duration:0.3s;-webkit-animation-fill-mode:both;animation-fill-mode:both}
+@-webkit-keyframes slideInUp{
+	0%{-webkit-transform:translateY(100%);transform:translateY(100%);visibility:visible}
+	100%{-webkit-transform:translateY(0);transform:translateY(0)}
+}
+@keyframes slideInUp{
+	0%{-webkit-transform:translateY(100%);transform:translateY(100%);visibility:visible}
+	100%{-webkit-transform:translateY(0);transform:translateY(0)}
+}
+.slideInUp{-webkit-animation-name:slideInUp;animation-name:slideInUp}
+@-webkit-keyframes slideInDown{
+	0%{-webkit-transform:translateY(-100%);transform:translateY(-100%);visibility:visible}
+	100%{-webkit-transform:translateY(0);transform:translateY(0)}
+}
+@keyframes slideInDown{
+	0%{-webkit-transform:translateY(-100%);transform:translateY(-100%);visibility:visible}
+	100%{-webkit-transform:translateY(0);transform:translateY(0)}
+}
+.slideInDown{-webkit-animation-name:slideInDown;animation-name:slideInDown}
+@-webkit-keyframes slideOutDown{
+	0%{-webkit-transform:translateY(0);transform:translateY(0)}
+	100%{visibility:hidden;-webkit-transform:translateY(100%);transform:translateY(100%)}
+}
+@keyframes slideOutDown{
+	0%{-webkit-transform:translateY(0);transform:translateY(0)}
+	100%{visibility:hidden;-webkit-transform:translateY(100%);transform:translateY(100%)}
+}
+.slideOutDown{-webkit-animation-name:slideOutDown;animation-name:slideOutDown}
+@-webkit-keyframes slideInRight{
+	0%{-webkit-transform:translateX(100%);transform:translateX(100%);visibility:visible}
+	100%{-webkit-transform:translateX(0);transform:translateX(0)}
+}
+@keyframes slideInRight{
+	0%{-webkit-transform:translateX(100%);transform:translateX(100%);visibility:visible}
+	100%{-webkit-transform:translateX(0);transform:translateX(0)}
+}
+.slideInRight{-webkit-animation-name:slideInRight;animation-name:slideInRight}
+
+
+/*大象*/
+.animated_ele{-webkit-animation-duration:0.5s;animation-duration:0.5s;-webkit-animation-fill-mode:both;animation-fill-mode:both}
+@-webkit-keyframes ele_animate{
+	0%{transform:rotateZ(0deg);-webkit-transform:rotateZ(0deg);}
+	50%{transform:ratateZ(20deg) translate3d(0%,-50%,0) scale(1.1,1.1);-webkit-transform:ratateZ(20deg) translate3d(0%,-50%,0) scale(1.1,1.1);visibility:visible}
+	100%{transform:rotateZ(-10deg) translate3d(0%,-100%,0);-webkit-transform:rotateZ(-10deg) translate3d(0%,-100%,0) ;}
+}
+@keyframes ele_animate{
+	0%{transform:rotateZ(0deg);-webkit-transform:rotateZ(0deg);}
+	50%{transform:ratateZ(20deg) translate3d(0%,-50%,0) scale(1.1,1.1);-webkit-transform:ratateZ(20deg) translate3d(0%,-50%,0) scale(1.1,1.1);visibility:visible}
+	100%{transform:rotateZ(-10deg) translate3d(0%,-100%,0);-webkit-transform:rotateZ(-10deg) translate3d(0%,-100%,0) ;}
+}
+.ele_animate{-webkit-animation-name:ele_animate;animation-name:ele_animate}
+
+/*水*/
+@-webkit-keyframes water{
+	0%{-webkit-transform:translate3d(0%,-80%,0) scale(0,0) ;transform:translate3d(0%,-80%,0) scale(0,0) ;visibility:visible}
+	100%{-webkit-transform:translate3d(0%,0%,0) scale(1,1) ;transform:scale(1,1) translate3d(0%,0%,0)}
+}
+@keyframes water{
+	0%{-webkit-transform:translate3d(0%,-80%,0) scale(0,0) ;transform:translate3d(0%,-80%,0) scale(0,0) ;visibility:visible}
+	100%{-webkit-transform:translate3d(0%,0%,0) scale(1,1) ;transform:scale(1,1) translate3d(0%,0%,0)}
+}
+.water{-webkit-animation-name:water;animation-name:water}
+.animate_delay{animation-delay:0.3s;-webkit-animation-delay:0.3s;}
+
+
+/*规则*/
+@-webkit-keyframes rulesUp{
+	0%{-webkit-transform:translate3d(0%,0%,0);transform:translate3d(0%,0%,0);visibility:visible}
+	100%{-webkit-transform:translate3d(0%,-20%,0) ;transform:translate3d(0%,-20%,0)}
+}
+@keyframes rulesUp{
+	0%{-webkit-transform:translate3d(0%,0%,0);transform:translate3d(0%,0%,0);visibility:visible}
+	100%{-webkit-transform:translate3d(0%,-20%,0) ;transform:translate3d(0%,-20%,0)}
+}
+.rulesUp{-webkit-animation-name:rulesUp;animation-name:rulesUp;background:rgba(0,0,0,0.3);z-index:31}
+@-webkit-keyframes rulesDown{
+	0%{-webkit-transform:translate3d(0%,-12%,0);transform:translate3d(0%,-12%,0);visibility:visible}
+	100%{-webkit-transform:translate3d(0%,0%,0) ;transform:translate3d(0%,0%,0)}
+}
+@keyframes rulesDown{
+	0%{-webkit-transform:translate3d(0%,-12%,0);transform:translate3d(0%,-12%,0);visibility:visible}
+	100%{-webkit-transform:translate3d(0%,0%,0) ;transform:translate3d(0%,0%,0)}
+}
+.rulesDown{-webkit-animation-name:rulesDown;animation-name:rulesDown;z-index:25}
+
+
+@-webkit-keyframes bring{
+	0%{-webkit-transform:scale(0,0) ;transform:scale(0,0);visibility:visible}
+	100%{-webkit-transform:scale(1,1) ;transform:scale(1,1) ;}
+}
+@keyframes bring{
+	0%{-webkit-transform:scale(0,0) ;transform:scale(0,0) ;visibility:visible}
+	100%{-webkit-transform:scale(1,1) ;transform:scale(1,1) ;}
+}
+.bring{-webkit-animation-name:bring;animation-name:bring;}
+.bring_animated{-webkit-animation-duration:0.5s;animation-duration:0.5s;-webkit-animation-fill-mode:both;animation-fill-mode:both}
+.infinite {
+	-webkit-animation-iteration-count: infinite;
+	animation-iteration-count: infinite;
+	animation-direction:alternate;
+	-webkit-animation-direction:alternate; 
+}

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="GiftsOrderMapper" >
+  <resultMap id="BaseResultMap" type="com.alidao.gifts.entity.GiftsOrder" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="order_no" property="orderNo" jdbcType="VARCHAR" />
+    <result column="integral" property="integral" jdbcType="INTEGER" />
+    <result column="integral_source_id" property="integralSourceId" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="realname" property="realname" jdbcType="VARCHAR" />
+    <result column="mobile" property="mobile" jdbcType="VARCHAR" />
+    <result column="gift_id" property="giftId" jdbcType="VARCHAR" />
+    <result column="giftname" property="giftname" jdbcType="VARCHAR" />
+    <result column="gifttype" property="gifttype" jdbcType="INTEGER" />
+    <result column="images" property="images" jdbcType="VARCHAR" />
+    <result column="nums" property="nums" jdbcType="INTEGER" />
+    <result column="note" property="note" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="create_user" property="createUser" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_user" property="updateUser" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="state" property="state" jdbcType="BIT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, order_no, integral, integral_source_id, user_id, username, realname, mobile, 
+    gift_id, giftname, gifttype, images, nums, note, address, status, create_user, create_time, 
+    update_user, update_time, state
+  </sql>
+  <sql id="Basic_Conditions" >
+    <![CDATA[where state = true]]>
+    <if test="orderNo != null" >and order_no = #{orderNo,jdbcType=VARCHAR}</if>
+    <if test="userId != null" >and user_id = #{userId,jdbcType=VARCHAR}</if>
+    <if test="giftId != null" >and gift_id = #{giftId,jdbcType=VARCHAR}</if>
+    <if test="gifttype != null" >and gifttype = #{gifttype,jdbcType=INTEGER}</if>
+    <if test="status != null" >and status = #{status,jdbcType=INTEGER}</if>
+    <include refid="COMMON_SQL.QUERY" />
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_gifts_order
+    where id = #{id,jdbcType=BIGINT}
+    and state = true 
+  </select>
+  <select id="select" resultMap="BaseResultMap" parameterType="com.alidao.gifts.entity.GiftsOrder" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_gifts_order
+    <include refid="Basic_Conditions" />
+    limit 0,1
+  </select>
+  <update id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    update t_gifts_order  set state = false
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="delete" parameterType="com.alidao.gifts.entity.GiftsOrder" >
+    update t_gifts_order  set state = false
+    <include refid="Basic_Conditions" />
+  </update>
+  <insert id="insert" parameterType="com.alidao.gifts.entity.GiftsOrder" >
+    insert into t_gifts_order (id, order_no, integral, 
+      integral_source_id, user_id, username, 
+      realname, mobile, gift_id, 
+      giftname, gifttype, images, 
+      nums, note, address, 
+      status, create_user, create_time, 
+      update_user, update_time, state
+      )
+    values (#{id,jdbcType=BIGINT}, #{orderNo,jdbcType=VARCHAR}, #{integral,jdbcType=INTEGER}, 
+      #{integralSourceId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
+      #{realname,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, #{giftId,jdbcType=VARCHAR}, 
+      #{giftname,jdbcType=VARCHAR}, #{gifttype,jdbcType=INTEGER}, #{images,jdbcType=VARCHAR}, 
+      #{nums,jdbcType=INTEGER}, #{note,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER}, #{createUser,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateUser,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{state,jdbcType=BIT}
+      )
+    <selectKey keyProperty="id" resultType="java.lang.Long">
+        select last_insert_id()
+    </selectKey>
+  </insert>
+  <update id="update" parameterType="com.alidao.gifts.entity.GiftsOrder" >
+    update t_gifts_order
+    <set >
+      <if test="orderNo != null" >
+        order_no = #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="integral != null" >
+        integral = #{integral,jdbcType=INTEGER},
+      </if>
+      <if test="integralSourceId != null" >
+        integral_source_id = #{integralSourceId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="realname != null" >
+        realname = #{realname,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="giftId != null" >
+        gift_id = #{giftId,jdbcType=VARCHAR},
+      </if>
+      <if test="giftname != null" >
+        giftname = #{giftname,jdbcType=VARCHAR},
+      </if>
+      <if test="gifttype != null" >
+        gifttype = #{gifttype,jdbcType=INTEGER},
+      </if>
+      <if test="images != null" >
+        images = #{images,jdbcType=VARCHAR},
+      </if>
+      <if test="nums != null" >
+        nums = #{nums,jdbcType=INTEGER},
+      </if>
+      <if test="note != null" >
+        note = #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createUser != null" >
+        create_user = #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUser != null" >
+        update_user = #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=BIT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="queryForCount" resultType="java.lang.Long" parameterType="java.util.Map" >
+    select count(*) from t_gifts_order
+    <include refid="Basic_Conditions" />
+    <include refid="COMMON_SQL.FUZZY" />
+  </select>
+  <select id="queryForList" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select 
+    <include refid="Base_Column_List" />
+    from 
+    t_gifts_order
+    <include refid="Basic_Conditions" />
+    <include refid="COMMON_SQL.FUZZY" />
+    <include refid="COMMON_SQL.LIMIT" />
+  </select>
+</mapper>

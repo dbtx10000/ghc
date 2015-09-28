@@ -1,0 +1,1 @@
+ALTER TABLE t_questionnaire ADD (integral int not null comment '金币');

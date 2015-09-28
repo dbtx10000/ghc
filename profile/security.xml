@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<security xmlns="http://www.alidao.com/schema"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.alidao.com/schema security-1.0.xsd">
+
+	<!-- <property-placeholder location="classpath:profile.properties" /> -->
+	
+	<intercepts>
+		<intercept path="/" state="true" mode="reverse" priority="1"
+			interceptor="com.alidao.basic.interceptor.WebUserPowerInterceptor">
+			<url name="静态访问" value="." />
+			<url name="api访问" value="/api/" />
+			<url name="wap访问" value="/wap/" />
+			<url name="app访问" value="/app/" />
+			<url name="微信接入" value="/wxapi/gate" />
+			<url name="微信授权" value="/wxapi/auth" />
+			<url name="微信图文" value="/wxapi/news" />
+			<url name="脚本调用" value="/wxapi/tojs" />
+			<url name="后台登录" value="/login" />
+			<url name="权限校验" value="/power" />
+		</intercept>
+		<intercept path="/wap/" state="true" mode="reverse" priority="2"
+			interceptor="com.alidao.wxapi.interceptor.WeixinOAuth2Interceptor">
+			<url name="分享页面" value="/share" />
+		</intercept>
+		<intercept path="/wap/" state="true" mode="obverse" priority="3"
+			interceptor="com.alidao.wxapi.interceptor.UserForUnionInterceptor">
+			<url name="用户信息" value="/user/center" />
+			<url name="修改信息" value="/user/update" />
+			<url name="完善信息" value="/user/makeup" />
+			<url name="手势密码" value="/user/touchs" />
+			<url name="手势密码" value="/user/stpswd" />
+			<url name="手势密码" value="/user/rtpswd" />
+			<url name="游戏模块" value="/game" />
+		</intercept>
+		<intercept path="/wap/" state="true" mode="obverse" priority="4"
+			interceptor="com.alidao.users.interceptor.SRedirectUriInterceptor">
+			<url name="用户登录" value="/user/slogin" />
+			<url name="用户注册" value="/user/regist" />
+			<url name="修改信息" value="/user/update" />
+			<url name="完善信息" value="/user/makeup" />
+			<url name="找回密码" value="/user/forget" />
+			<url name="支付密码" value="/user/payset" />
+			<url name="手势密码" value="/user/touchs" />
+		</intercept>
+		<intercept path="/wap/" state="true" mode="obverse" priority="5"
+			interceptor="com.alidao.users.interceptor.WapUserPowerInterceptor">
+			<url name="修改信息" value="/user/update" />
+			<url name="用户信息" value="/user/center" />
+			<url name="用户助手" value="/user/helper" />
+			<url name="邀请用户" value="/user/invite" />
+			<url name="我的投资" value="/user/invest" />
+			<url name="我的投资" value="/user/chkpay" />
+			<url name="我的金币" value="/user/goldmy" />
+			<url name="我的金币" value="/user/awards" />
+			<url name="我的金券" value="/user/cashmy" />
+			<url name="我的礼品" value="/user/giftmy" />
+			<url name="我的测评" value="/user/tester" />
+			<url name="退出登录" value="/user/logout" />
+			<url name="取消投资" value="/user/cancel" />
+			<url name="修改密码" value="/user/repswd" />
+			<url name="支付密码" value="/user/payset" />
+			<url name="手势密码" value="/user/chktpw" />
+			<url name="手势密码" value="/user/stpswd" />
+			<url name="手势密码" value="/user/rtpswd" />
+			<url name="我的绑卡" value="/user/mycard" />
+			<url name="前往绑卡" value="/user/gobank" />
+			<url name="绑卡信息" value="/user/detail" />
+			<url name="解除绑定" value="/user/unwrap" />
+			<url name="订购成功" value="/product/buy" />
+			<url name="订购成功" value="/product/specialBuy" />
+			<url name="线下支付" value="/product/pay" />
+			<url name="金币抵扣" value="/product/contpay" />
+			<url name="金币抵扣" value="/product/specialPay" />
+			<url name="支付成功" value="/product/success" />
+			<url name="支付成功" value="/product/specialSuccess" />
+			<url name="银联支付" value="/cnpay/sgate" />
+			<url name="银联支付" value="/cnpay/spaid" />
+			<url name="银联支付" value="/cnpay/ssure" />
+			<url name="银联支付" value="/cnpay/sopen" />
+			<url name="银联支付" value="/cnpay/sbind" />
+			<url name="银联支付" value="/cnpay/ssure" />
+			<url name="积分兑换" value="/igift/gthis" />
+			<url name="积分兑换" value="/igift/gsure" />
+			<url name="积分兑换" value="/igift/check" />
+			<url name="积分兑换" value="/igift/order" />
+			<url name="风险评测" value="/riskEvaluation" />
+			<url name="抽奖" value="/jackpot/index" />
+			<url name="抽奖" value="/jackpot/shake" />
+			<url name="问卷调查" value="/questionnaire/index" />
+			<url name="问卷调查" value="/questionnaire/gater" />
+			<url name="问卷调查" value="/questionnaire/save" />
+			<url name="问卷调查" value="/questionnaire/finish" />
+			<url name="问卷调查" value="/balance/index" />
+			<!-- <url name="签到" value="/signin/index" />
+			<url name="签到" value="/signin/signin" /> -->
+		</intercept>
+		<!-- 
+		<intercept path="/wap/" state="true" mode="obverse" priority="6"
+			interceptor="com.alidao.users.interceptor.UserStatusJCInterceptor">
+			<url name="订购成功" value="/product/buy" />
+			<url name="金币抵扣" value="/product/contpay" />
+			<url name="支付成功" value="/product/success" />
+			<url name="银联支付" value="/cnpay/sgate" />
+			<url name="银联支付" value="/cnpay/ssure" />
+			<url name="银联支付" value="/cnpay/spaid" />
+			<url name="银联支付" value="/cnpay/sopen" />
+			<url name="银联支付" value="/cnpay/sbind" />
+			<url name="银联支付" value="/cnpay/ssure" />
+		</intercept>
+		-->
+	</intercepts>
+
+</security>

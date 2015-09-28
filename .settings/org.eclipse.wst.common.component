@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="viket">
+        <wb-resource deploy-path="/" source-path="/WebRoot" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/authority"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/basic-server"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/basic-client"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/basic-action"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/basic-common"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/users-server"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/users-client"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/users-action"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/wxapi-server"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/cnpay-server"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/gifts-client"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/gifts-server"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/gifts-action"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/user-balance"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/profile"/>
+        <property name="java-output-path" value="/viket/WebRoot/WEB-INF/classes"/>
+        <property name="me-merge-utility-modules" value="true"/>
+        <property name="context-root" value="/ghc"/>
+    </wb-module>
+</project-modules>

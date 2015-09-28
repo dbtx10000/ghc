@@ -1,0 +1,38 @@
+@charset "utf-8";
+/* CSS Document */
+
+.user .my{background:#2e2e32;}
+.yields{background:#ff6147; padding:0px 15px; color:#fff;}
+.asset p{font-size:13px;color:#999; padding-top:12px;}
+.asset h3{ font-size:17px; padding:12px 0px;color:#ef4023;}
+
+.link{ background:#fff; margin-top:10px; border-top:1px #ccc solid;}
+.link p{ padding:9px 10px; font-size:13px; color:#999;}
+.link ul li{ position:relative; overflow:hidden;font-size:15px; height:60px;width:33.3333%; float:left; background:none;border-top:1px #ccc solid;border-bottom:1px #ccc solid; }
+.link ul li a{ line-height:normal;display:block;}
+.link ul li a span{ margin:0 auto;width:24px; height:24px;padding-top:12px; display:block;}
+.link ul .get span{background:url(../images/mine_product_get.png) center no-repeat; background-size:24px auto; background-position-y:8px;}
+.link ul .ing span{background:url(../images/mine_product_ing.png) center no-repeat; background-size:24px auto; background-position-y:8px;}
+.link ul .end span{background:url(../images/mine_product_end.png) center no-repeat; background-size:24px auto; background-position-y:8px;}
+.link ul li a .nub{ position:absolute;bottom:10px;padding:0;margin-left:4px;color:#fff;font-size:9px; width:12px; height:12px;line-height:12px; display:inline-block;border-radius:50% 50%;-webkit-border-radius:50% 50%;-
+moz-border-radius:50% 50%;-o-border-radius:50% 50%;-ms-border-radius:50% 50%;}
+.link ul li a .red{background:#ff6147;}
+.link ul li a .gray{background:#666;}
+
+.link .linkul li{ width:25%;}
+.link .linkul li a{ line-height:normal;display:block;}
+.link .linkul li a span{ margin:0 auto;width:24px; height:24px;padding-top:12px; display:block;}
+.link .linkul .card span{background:url(../images/mine_card.png) center no-repeat; background-size:24px auto; background-position-y:8px;}
+.link .linkul .coin span{background:url(../images/mine_jinbi.png) center no-repeat; background-size:24px auto; background-position-y:8px;}
+.link .linkul .gift span{background:url(../images/mine_gift.png) center no-repeat; background-size:24px auto; background-position-y:8px;}
+.link .linkul .prize span{background:url(../images/mine_jiangpin.png) center no-repeat; background-size:24px auto; background-position-y:8px;}
+
+.listLink ul{ border-top:1px #ccc solid; margin-bottom:0px; margin-top:10px;}
+.listLink ul li{ width:100%; height:44px; line-height:44px; background:url(../images/icon_more.png) right center no-repeat #fff; background-size:44px; border-bottom:1px #ccc solid;}
+.listLink ul li a {padding:0;margin-top:0;font-size:15px; border:none; width:100%;display:block;background:none;}
+.listLink ul li a span{margin-top:12px;width:30px;height:20px;float:left;display:block; margin-right:8px; }
+.listLink ul li .text span{background:url(../images/mine_test.png) left center no-repeat;background-size:20px auto;background-position-x:10px;}
+.listLink ul li .help span{background:url(../images/mine_help.png) left center no-repeat;background-size:20px auto;background-position-x:10px;}
+.listLink ul li .friend span{background:url(../images/mine_friends.png) left center no-repeat;background-size:20px auto;background-position-x:10px;}
+.listLink ul li .password span{background:url(../images/mine_password.png) left center no-repeat;background-size:20px auto;background-position-x:10px;}
+.listLink ul:last-child{ padding-bottom:60px;}

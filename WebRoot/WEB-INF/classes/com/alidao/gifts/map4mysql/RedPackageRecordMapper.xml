@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="RedPackageRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.alidao.gifts.entity.RedPackageRecord" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="user_account" property="userAccount" jdbcType="VARCHAR" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="user_image" property="userImage" jdbcType="VARCHAR" />
+    <result column="source_id" property="sourceId" jdbcType="VARCHAR" />
+    <result column="source_name" property="sourceName" jdbcType="VARCHAR" />
+    <result column="integral" property="integral" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="state" property="state" jdbcType="BIT" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, user_id, user_account, user_name, user_image, source_id, source_name, integral, 
+    create_time, update_time, state, remark
+  </sql>
+  <sql id="Basic_Conditions" >
+    <![CDATA[where state = true]]>
+    <if test="id != null" >
+       and id = #{id,jdbcType=VARCHAR}
+    </if>
+    <if test="userId != null" >
+       and user_id = #{userId,jdbcType=VARCHAR}
+    </if>
+    <if test="userAccount != null" >
+       and user_account = #{userAccount,jdbcType=VARCHAR}
+    </if>
+    <if test="userName != null" >
+       and user_name = #{userName,jdbcType=VARCHAR}
+    </if>
+    <if test="userImage != null" >
+       and user_image = #{userImage,jdbcType=VARCHAR}
+    </if>
+    <if test="sourceId != null" >
+       and source_id = #{sourceId,jdbcType=VARCHAR}
+    </if>
+    <if test="sourceName != null" >
+       and source_name = #{sourceName,jdbcType=VARCHAR}
+    </if>
+    <if test="integral != null" >
+       and integral = #{integral,jdbcType=INTEGER}
+    </if>
+    <if test="createTime != null" >
+       and create_time = #{createTime,jdbcType=TIMESTAMP}
+    </if>
+    <if test="updateTime != null" >
+       and update_time = #{updateTime,jdbcType=TIMESTAMP}
+    </if>
+    <if test="state != null" >
+       and state = #{state,jdbcType=BIT}
+    </if>
+    <if test="remark != null" >
+       and remark = #{remark,jdbcType=VARCHAR}
+    </if>
+    <include refid="COMMON_SQL.QUERY" />
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_red_package_record
+    where id = #{id,jdbcType=VARCHAR}
+    and state = true 
+  </select>
+  <select id="select" resultMap="BaseResultMap" parameterType="com.alidao.gifts.entity.RedPackageRecord" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_red_package_record
+    <include refid="Basic_Conditions" />
+    limit 0,1
+  </select>
+  <update id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    update t_red_package_record  set state = false
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="delete" parameterType="com.alidao.gifts.entity.RedPackageRecord" >
+    update t_red_package_record  set state = false
+    <include refid="Basic_Conditions" />
+  </update>
+  <insert id="insert" parameterType="com.alidao.gifts.entity.RedPackageRecord" >
+    insert into t_red_package_record (id, user_id, user_account, 
+      user_name, user_image, source_id, 
+      source_name, integral, create_time, 
+      update_time, state, remark
+      )
+    values (#{id,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{userAccount,jdbcType=VARCHAR}, 
+      #{userName,jdbcType=VARCHAR}, #{userImage,jdbcType=VARCHAR}, #{sourceId,jdbcType=VARCHAR}, 
+      #{sourceName,jdbcType=VARCHAR}, #{integral,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{state,jdbcType=BIT}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="update" parameterType="com.alidao.gifts.entity.RedPackageRecord" >
+    update t_red_package_record
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="userAccount != null" >
+        user_account = #{userAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userImage != null" >
+        user_image = #{userImage,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceId != null" >
+        source_id = #{sourceId,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceName != null" >
+        source_name = #{sourceName,jdbcType=VARCHAR},
+      </if>
+      <if test="integral != null" >
+        integral = #{integral,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=BIT},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <select id="queryForCount" resultType="java.lang.Long" parameterType="java.util.Map" >
+    select count(*) from t_red_package_record
+    <include refid="Basic_Conditions" />
+    <include refid="COMMON_SQL.FUZZY" />
+  </select>
+  <select id="queryForList" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select 
+    <include refid="Base_Column_List" />
+    from 
+    t_red_package_record
+    <include refid="Basic_Conditions" />
+    <include refid="COMMON_SQL.FUZZY" />
+    <include refid="COMMON_SQL.LIMIT" />
+  </select>
+</mapper>

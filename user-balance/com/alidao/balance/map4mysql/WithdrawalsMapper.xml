@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="WithdrawalsMapper" >
+  <resultMap id="BaseResultMap" type="com.alidao.balance.entity.Withdrawals" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="realname" property="realname" jdbcType="VARCHAR" />
+    <result column="money" property="money" jdbcType="DECIMAL" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="note" property="note" jdbcType="VARCHAR" />
+    <result column="before_balance" property="beforeBalance" jdbcType="DECIMAL" />
+    <result column="after_balance" property="afterBalance" jdbcType="DECIMAL" />
+    <result column="serial" property="serial" jdbcType="VARCHAR" />
+    <result column="open_bank_id" property="openBankId" jdbcType="VARCHAR" />
+    <result column="open_bank_name" property="openBankName" jdbcType="VARCHAR" />
+    <result column="bank_card_no" property="bankCardNo" jdbcType="VARCHAR" />
+    <result column="bank_cert_id" property="bankCertId" jdbcType="VARCHAR" />
+    <result column="bank_user_name" property="bankUserName" jdbcType="VARCHAR" />
+    <result column="bank_cert_type" property="bankCertType" jdbcType="VARCHAR" />
+    <result column="bank_user_prov" property="bankUserProv" jdbcType="VARCHAR" />
+    <result column="bank_user_city" property="bankUserCity" jdbcType="VARCHAR" />
+    <result column="create_user" property="createUser" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_user" property="updateUser" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="state" property="state" jdbcType="BIT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, user_id, username, realname, money, status, note, before_balance, after_balance, 
+    serial, open_bank_id, open_bank_name, bank_card_no, bank_cert_id, bank_user_name, 
+    bank_cert_type, bank_user_prov, bank_user_city, create_user, create_time, update_user, 
+    update_time, state
+  </sql>
+  <sql id="Basic_Conditions" >
+    <![CDATA[where state = true]]>
+    <if test="id != null" >
+       and id = #{id,jdbcType=BIGINT}
+    </if>
+    <if test="userId != null" >
+       and user_id = #{userId,jdbcType=VARCHAR}
+    </if>
+    <if test="username != null" >
+       and username = #{username,jdbcType=VARCHAR}
+    </if>
+    <if test="realname != null" >
+       and realname = #{realname,jdbcType=VARCHAR}
+    </if>
+    <if test="money != null" >
+       and money = #{money,jdbcType=DECIMAL}
+    </if>
+    <if test="status != null" >
+       and status = #{status,jdbcType=INTEGER}
+    </if>
+    <if test="note != null" >
+       and note = #{note,jdbcType=VARCHAR}
+    </if>
+    <if test="beforeBalance != null" >
+       and before_balance = #{beforeBalance,jdbcType=DECIMAL}
+    </if>
+    <if test="afterBalance != null" >
+       and after_balance = #{afterBalance,jdbcType=DECIMAL}
+    </if>
+    <if test="serial != null" >
+       and serial = #{serial,jdbcType=VARCHAR}
+    </if>
+    <if test="openBankId != null" >
+       and open_bank_id = #{openBankId,jdbcType=VARCHAR}
+    </if>
+    <if test="openBankName != null" >
+       and open_bank_name = #{openBankName,jdbcType=VARCHAR}
+    </if>
+    <if test="bankCardNo != null" >
+       and bank_card_no = #{bankCardNo,jdbcType=VARCHAR}
+    </if>
+    <if test="bankCertId != null" >
+       and bank_cert_id = #{bankCertId,jdbcType=VARCHAR}
+    </if>
+    <if test="bankUserName != null" >
+       and bank_user_name = #{bankUserName,jdbcType=VARCHAR}
+    </if>
+    <if test="bankCertType != null" >
+       and bank_cert_type = #{bankCertType,jdbcType=VARCHAR}
+    </if>
+    <if test="bankUserProv != null" >
+       and bank_user_prov = #{bankUserProv,jdbcType=VARCHAR}
+    </if>
+    <if test="bankUserCity != null" >
+       and bank_user_city = #{bankUserCity,jdbcType=VARCHAR}
+    </if>
+    <if test="createUser != null" >
+       and create_user = #{createUser,jdbcType=VARCHAR}
+    </if>
+    <if test="createTime != null" >
+       and create_time = #{createTime,jdbcType=TIMESTAMP}
+    </if>
+    <if test="updateUser != null" >
+       and update_user = #{updateUser,jdbcType=VARCHAR}
+    </if>
+    <if test="updateTime != null" >
+       and update_time = #{updateTime,jdbcType=TIMESTAMP}
+    </if>
+    <if test="state != null" >
+       and state = #{state,jdbcType=BIT}
+    </if>
+    <include refid="COMMON_SQL.QUERY" />
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_withdrawals
+    where id = #{id,jdbcType=BIGINT}
+    and state = true 
+  </select>
+  <select id="select" resultMap="BaseResultMap" parameterType="com.alidao.balance.entity.Withdrawals" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_withdrawals
+    <include refid="Basic_Conditions" />
+    limit 0,1
+  </select>
+  <update id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    update t_withdrawals  set state = false
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="delete" parameterType="com.alidao.balance.entity.Withdrawals" >
+    update t_withdrawals  set state = false
+    <include refid="Basic_Conditions" />
+  </update>
+  <insert id="insert" parameterType="com.alidao.balance.entity.Withdrawals" >
+    insert into t_withdrawals (id, user_id, username, 
+      realname, money, status, 
+      note, before_balance, after_balance, 
+      serial, open_bank_id, open_bank_name, 
+      bank_card_no, bank_cert_id, bank_user_name, 
+      bank_cert_type, bank_user_prov, bank_user_city, 
+      create_user, create_time, update_user, 
+      update_time, state)
+    values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
+      #{realname,jdbcType=VARCHAR}, #{money,jdbcType=DECIMAL}, #{status,jdbcType=INTEGER}, 
+      #{note,jdbcType=VARCHAR}, #{beforeBalance,jdbcType=DECIMAL}, #{afterBalance,jdbcType=DECIMAL}, 
+      #{serial,jdbcType=VARCHAR}, #{openBankId,jdbcType=VARCHAR}, #{openBankName,jdbcType=VARCHAR}, 
+      #{bankCardNo,jdbcType=VARCHAR}, #{bankCertId,jdbcType=VARCHAR}, #{bankUserName,jdbcType=VARCHAR}, 
+      #{bankCertType,jdbcType=VARCHAR}, #{bankUserProv,jdbcType=VARCHAR}, #{bankUserCity,jdbcType=VARCHAR}, 
+      #{createUser,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateUser,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{state,jdbcType=BIT})
+    <selectKey keyProperty="id" resultType="java.lang.Long">
+        select last_insert_id()
+    </selectKey>
+  </insert>
+  <update id="update" parameterType="com.alidao.balance.entity.Withdrawals" >
+    update t_withdrawals
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="realname != null" >
+        realname = #{realname,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null" >
+        money = #{money,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="note != null" >
+        note = #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="beforeBalance != null" >
+        before_balance = #{beforeBalance,jdbcType=DECIMAL},
+      </if>
+      <if test="afterBalance != null" >
+        after_balance = after_balance + #{afterBalance,jdbcType=DECIMAL},
+      </if>
+      <if test="serial != null" >
+        serial = #{serial,jdbcType=VARCHAR},
+      </if>
+      <if test="openBankId != null" >
+        open_bank_id = #{openBankId,jdbcType=VARCHAR},
+      </if>
+      <if test="openBankName != null" >
+        open_bank_name = #{openBankName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardNo != null" >
+        bank_card_no = #{bankCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCertId != null" >
+        bank_cert_id = #{bankCertId,jdbcType=VARCHAR},
+      </if>
+      <if test="bankUserName != null" >
+        bank_user_name = #{bankUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCertType != null" >
+        bank_cert_type = #{bankCertType,jdbcType=VARCHAR},
+      </if>
+      <if test="bankUserProv != null" >
+        bank_user_prov = #{bankUserProv,jdbcType=VARCHAR},
+      </if>
+      <if test="bankUserCity != null" >
+        bank_user_city = #{bankUserCity,jdbcType=VARCHAR},
+      </if>
+      <if test="createUser != null" >
+        create_user = #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUser != null" >
+        update_user = #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=BIT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="queryForCount" resultType="java.lang.Long" parameterType="java.util.Map" >
+    select count(*) from t_withdrawals
+    <include refid="Basic_Conditions" />
+    <include refid="COMMON_SQL.FUZZY" />
+  </select>
+  <select id="queryForList" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select 
+    <include refid="Base_Column_List" />
+    from 
+    t_withdrawals
+    <include refid="Basic_Conditions" />
+    <include refid="COMMON_SQL.FUZZY" />
+    <include refid="COMMON_SQL.LIMIT" />
+  </select>
+</mapper>

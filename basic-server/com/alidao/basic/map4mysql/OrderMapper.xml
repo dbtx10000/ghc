@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="OrderMapper" >
+  <resultMap id="BaseResultMap" type="com.alidao.basic.entity.Order" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="pay_no" property="payNo" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="user_username" property="userUsername" jdbcType="VARCHAR" />
+    <result column="user_linkman" property="userLinkman" jdbcType="VARCHAR" />
+    <result column="user_contact" property="userContact" jdbcType="VARCHAR" />
+    <result column="product_id" property="productId" jdbcType="VARCHAR" />
+    <result column="invest_money" property="investMoney" jdbcType="INTEGER" />
+    <result column="pay_type" property="payType" jdbcType="INTEGER" />
+    <result column="serial_no" property="serialNo" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="pay_time" property="payTime" jdbcType="TIMESTAMP" />
+    <result column="cmer_id" property="cmerId" jdbcType="VARCHAR" />
+    <result column="card_no" property="cardNo" jdbcType="VARCHAR" />
+    <result column="open_bank_id" property="openBankId" jdbcType="VARCHAR" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="cert_type" property="certType" jdbcType="VARCHAR" />
+    <result column="cert_id" property="certId" jdbcType="VARCHAR" />
+    <result column="use_integral" property="useIntegral" jdbcType="INTEGER" />
+    <result column="source_id" property="sourceId" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="cash_id" property="cashId" jdbcType="VARCHAR" />
+    <result column="cash_money" property="cashMoney" jdbcType="INTEGER" />
+    <result column="create_user" property="createUser" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_user" property="updateUser" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="state" property="state" jdbcType="BIT" />
+    <result column="product_type" property="productType" jdbcType="INTEGER" />
+    <result column="actual_money" property="actualMoney" jdbcType="INTEGER" />
+    <result column="online_pay" property="onlinePay" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, pay_no, user_id, user_username, user_linkman, user_contact, product_id, invest_money, 
+    pay_type, serial_no, status, pay_time, cmer_id, card_no, open_bank_id, user_name,
+    cert_type, cert_id, use_integral, source_id, type, cash_id, cash_money, create_user, 
+    create_time, update_user, update_time, state,product_type,actual_money,online_pay
+  </sql>
+  <sql id="Basic_Conditions" >
+  	<![CDATA[where state = true]]>
+    <if test="payNo != null">and pay_no = #{payNo,jdbcType=VARCHAR}</if>
+    <if test="userId != null">and user_id = #{userId,jdbcType=VARCHAR}</if>
+    <if test="productId != null">and product_id = #{productId,jdbcType=VARCHAR}</if>
+    <if test="investMoney != null">and invest_money = #{investMoney,jdbcType=INTEGER}</if>
+    <if test="payType != null">and pay_type = #{payType,jdbcType=INTEGER}</if>
+    <if test="status != null">and status = #{status,jdbcType=INTEGER}</if>
+    <if test="type != null">and type = #{type,jdbcType=INTEGER}</if>
+    <if test="productType != null">and product_type = #{productType,jdbcType=INTEGER}</if>
+    <if test="onlinePay != null">and online_pay = #{onlinePay,jdbcType=INTEGER}</if>
+    <include refid="COMMON_SQL.QUERY"/>
+  </sql>
+  <select id="select" resultMap="BaseResultMap" parameterType="com.alidao.basic.entity.Order" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_order
+    <include refid="Basic_Conditions" />
+    limit 0,1
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" /> 
+    from t_order 
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <update id="delete" parameterType="com.alidao.basic.entity.Order" >
+    update t_order set state = false 
+    <include refid="Basic_Conditions" />
+  </update>
+  <update id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    update t_order set state = false 
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <insert id="insert" parameterType="com.alidao.basic.entity.Order" >
+    insert into t_order (id, pay_no, user_id, 
+      user_username, user_linkman, user_contact, 
+      product_id, invest_money, pay_type, 
+      serial_no, status, pay_time, 
+      cmer_id, card_no, open_bank_id, 
+      user_name, cert_type, cert_id, 
+      use_integral, source_id, type, 
+      cash_id, cash_money, create_user, 
+      create_time, update_user, update_time, 
+      state,product_type,actual_money,online_pay)
+    values (#{id,jdbcType=VARCHAR}, #{payNo,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, 
+      #{userUsername,jdbcType=VARCHAR}, #{userLinkman,jdbcType=VARCHAR}, #{userContact,jdbcType=VARCHAR}, 
+      #{productId,jdbcType=VARCHAR}, #{investMoney,jdbcType=INTEGER}, #{payType,jdbcType=INTEGER}, 
+      #{serialNo,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{payTime,jdbcType=TIMESTAMP}, 
+      #{cmerId,jdbcType=VARCHAR}, #{cardNo,jdbcType=VARCHAR}, #{openBankId,jdbcType=VARCHAR}, 
+      #{userName,jdbcType=VARCHAR}, #{certType,jdbcType=VARCHAR}, #{certId,jdbcType=VARCHAR}, 
+      #{useIntegral,jdbcType=INTEGER}, #{sourceId,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, 
+      #{cashId,jdbcType=VARCHAR}, #{cashMoney,jdbcType=INTEGER}, #{createUser,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateUser,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{state,jdbcType=BIT},#{productType,jdbcType=INTEGER},#{actualMoney,jdbcType=INTEGER},#{onlinePay,jdbcType=INTEGER})
+  </insert>
+  <update id="update" parameterType="com.alidao.basic.entity.Order" >
+    update t_order
+    <set >
+      <if test="payNo != null" >
+        pay_no = #{payNo,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="userUsername != null" >
+        user_username = #{userUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="userLinkman != null" >
+        user_linkman = #{userLinkman,jdbcType=VARCHAR},
+      </if>
+      <if test="userContact != null" >
+        user_contact = #{userContact,jdbcType=VARCHAR},
+      </if>
+      <if test="productId != null" >
+        product_id = #{productId,jdbcType=VARCHAR},
+      </if>
+      <if test="investMoney != null" >
+        invest_money = #{investMoney,jdbcType=INTEGER},
+      </if>
+      <if test="payType != null" >
+        pay_type = #{payType,jdbcType=INTEGER},
+      </if>
+      <if test="serialNo != null" >
+        serial_no = #{serialNo,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="payTime != null" >
+        pay_time = #{payTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cmerId != null" >
+        cmer_id = #{cmerId,jdbcType=VARCHAR},
+      </if>
+      <if test="cardNo != null" >
+        card_no = #{cardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="openBankId != null" >
+        open_bank_id = #{openBankId,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="certType != null" >
+        cert_type = #{certType,jdbcType=VARCHAR},
+      </if>
+      <if test="certId != null" >
+        cert_id = #{certId,jdbcType=VARCHAR},
+      </if>
+      <if test="useIntegral != null" >
+        use_integral = #{useIntegral,jdbcType=INTEGER},
+      </if>
+      <if test="sourceId != null" >
+        source_id = #{sourceId,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="cashId != null" >
+        cash_id = #{cashId,jdbcType=VARCHAR},
+      </if>
+      <if test="cashMoney != null" >
+        cash_money = #{cashMoney,jdbcType=INTEGER},
+      </if>
+      <if test="createUser != null" >
+        create_user = #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUser != null" >
+        update_user = #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=BIT},
+      </if>
+      <if test="productType != null" >
+        product_type = #{productType,jdbcType=INTEGER},
+      </if>
+      <if test="actualMoney != null" >
+        actual_money = #{actualMoney,jdbcType=INTEGER},
+      </if>
+      <if test="onlinePay != null" >
+        online_pay = #{onlinePay,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <select id="queryForCount" resultType="java.lang.Long" parameterType="java.util.Map" >
+    select count(*) from t_order
+    <include refid="Basic_Conditions" />
+    <include refid="COMMON_SQL.FUZZY" />
+  </select>
+  <select id="queryForList" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_order
+    <include refid="Basic_Conditions" />
+    <include refid="COMMON_SQL.FUZZY" />
+    <include refid="COMMON_SQL.LIMIT" />
+  </select>
+</mapper>

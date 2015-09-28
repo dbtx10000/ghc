@@ -1,0 +1,183 @@
+body, canvas, p, article, section, ul, li ,h3,h1{ margin: 0; padding: 0; }
+canvas { position: absolute;top:0;left:0; }
+a { text-decoration: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
+li { list-style: none; }
+em{font-style:normal;}
+@font-face {
+	font-family: berlin_sans ;  
+	src:url('berlin.ttf');
+}
+
+.page1{background:url(../images/game/page1.png) center center no-repeat;background-size:cover;}
+.page2{background:url(../images/game/page2.png) center center no-repeat;background-size:cover;}
+.page3{background:url(../images/game/page3.png) center center no-repeat;background-size:cover;}
+.page4{background:url(../images/game/startBg.png) center center no-repeat;background-size:cover;}
+.menu{}
+.menu .btn{margin:0 auto;display:block;width:60%;}
+.menu .start{position:relative;top:10%;height:30%;background:url(../images/game/start.png) center center no-repeat;background-size:76% auto;}
+.menu .charts{position:relative;top:9%;height:10%;background:url(../images/game/score.png) center center no-repeat;background-size:76% auto;}
+.menu .conet{position:relative;top:12%;left:15%;width:70%;}
+.menu .conet a{width:48.5%;display:inline-block;text-align:center;line-height:30px;color:#7f5130;font-size:18px;font-weight:bolder;font-family: berlin_sans ;}
+.menu .conet a:nth-child(1){border-right:1px solid #7f5130;}
+
+
+
+/*  #load { background: url(../images/game/startBg.png) center center no-repeat; background-size: cover; }*/
+#house { z-index: 999 };
+#houseShow{z-index:9999};
+#movehouse{z-index:9990}
+/*游戏中头部*/
+#header { position: absolute; top: 0; left: 0; width: 100%; height: 50px; z-index: 9999; display: block; overflow: hidden; zoom: 1; background: url(images/bg_mine.png) center center no-repeat; background-size: 100% auto; }
+#header .left { float: left; width: 50%; line-height: 40px }
+#header .left img { float:left;margin-left: 10%;margin-top:3%; width: 30px; height: 30px; border-radius: 50%; -webkit-border-radius: 50%; border: 1px solid #ff6600;display:inline-block }
+#header .left span {float: left;line-height:42px; margin-left: 10px; font-size: 16px; color: #cc6633;display: inline-block; }
+#header .right { float: right; width: 40%; height: 50px; line-height: 50px; background: url(../images/game/bg_score.png) left center no-repeat; background-size: 80%; text-align: center; color: #ffcc66; }
+/*游戏规则*/
+#rule { position: absolute; top: 0; left: 0; z-index: 9999; background: rgba(0, 0, 0, .8); width: 100%; height: 100%; display: none; }
+#rule h3 { margin: 0 auto; margin-top: 4%; margin-bottom: 4%; width: 60%;height:50px; background:url(../images/game/rule.png) center center no-repeat;background-size:125% auto;line-height: 50px; text-align: center; color: #f9f5cf; border-radius: 10px; -webkit-border-radius: 10px;font-size: 20px; text-align: center; border: 4px solid #9b492e; }
+#rule .content { margin: 0 auto; padding: 10px; width: 82%; border: 4px solid #9b492e; border-radius: 10px; -webkit-border-radius: 10px; background: -webkit-linear-gradient(top, #f6ca64 0%, #f9d888 50%, #f6cb64 100%) }
+#rule .content li { font-size: 13px; color: #000; line-height: 150% }
+#rule .close { position: absolute; top: 3%; right: 4%; width: 30px; height: 30px; background: #f6cb64; display: block; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); line-height: 30px; text-align: center;background:url(../images/game/close.png) center center no-repeat;background-size:100%; }
+#rule .bull { color: #9b492e; font-size: 18px; }
+@media screen and (max-width:320px) {
+	#rule .content li { font-size: 11px; }
+	#friend h3,#charts h3,#success h3{margin:0 auto;margin-top:2%;width:80%;height:50px;}
+	#gameoverResult .btn{margin:0 auto;margin-top:3%;height:50px;display:block;}
+}
+@media screen and (min-width:321px) and (max-width:375px) {
+	#rule .content li { font-size: 12px; }
+	#friend h3,#charts h3,#success h3{margin:0 auto;margin-top:2%;width:80%;height:55px;}
+	#gameoverResult .btn{margin:0 auto;margin-top:3%;height:55px;display:block;}
+}
+@media screen and (min-width:376px) {
+	#rule .content li { font-size: 13px; }
+	#friend h3,#charts h3,#success h3{margin:0 auto;margin-top:2%;width:80%;height:60px;}
+	#gameoverResult .btn{margin:0 auto;margin-top:3%;height:60px;display:block;}
+}
+/*gameover*/
+#gameoverResult{position:absolute;top:0;left:0;z-index:99999;width:100%;height:100%;text-align:center;background:url(../images/game/bgf.jpg) center center no-repeat;background-size:cover;display:none}
+#gameoverResult .title{margin:0 auto;margin-top:8%;width:80%;height:50px;background:url(../images/game/yourScore.png) center center no-repeat;background-size:100% auto;font-size:30px;line-height:50px;}
+#gameoverResult .history{padding:0px 10px;margin:5% auto;height:30px;line-height:30px;width:49%;background:#f9f5cf;font-size: 18px;color:#d65c17;border-radius:15px;-webkit-border-radius:15px;display:block;overflow:hidden;zoom:1;}
+#gameoverResult .history i{margin-top:-3px;font-style:normal;display:inline-block;}
+#gameoverResult .history .text{float:left;width:80%;display:block;overflow:hidden;zoom:1}
+#gameoverResult .history .text em{width:40%;display:inline-block;font-size:25px;font-weight:bolder;font-family: berlin_sans;}
+#gameoverResult .history .icon-small{float:left;margin-top:3px;width:26px;height:26px;display:inline-block;background:url(../images/game/smallHouse.png) center center no-repeat;background-size:80% auto;}
+#gameoverResult .score{margin:0 auto;width:60%;height:76px;}
+#gameoverResult .score .text{float:left;width:50%;line-height:76px;font-size:76px;color:#fff;font-family: berlin_sans;text-shadow:0px 0px 8px #d65c17;-webkit-text-shadow:0px 0px 8px #d65c17;text-align:right;}
+#gameoverResult .score .icon-big{float:right;width:50%;height:76px;display:block;background:url(../images/game/house.png) center center no-repeat;background-size:50% auto;text-align:center;}
+#gameoverResult .sum{margin:5%;font-size:50px;}
+#gameoverResult .again{background:url(../images/game/again.png)center center no-repeat;background-size:45% auto;}
+#gameoverResult .charts{background:url(../images/game/charts.png)center center no-repeat;background-size:45% auto;}
+#gameoverResult .sumbit{background:url(../images/game/submit.png)center center no-repeat;background-size:45% auto;}
+#gameoverResult .invited{background:url(../images/game/invitefriend.png) center center no-repeat;background-size:45%;}
+#gameoverResult .tips{line-height:40px;font-size:14px}
+#gameoverResult img{width:40%;}
+/*friend*/
+#friend {position:absolute;top:0;left:0;z-index:99999;width:100%;min-height:100%;text-align:center;background:url(../images/game/bg.jpg) center center no-repeat;background-size:cover;display:-none}
+#friend h3{background:url(../images/game/friend.png) center center no-repeat;background-size:45% auto;}
+#friend .list,#charts .list{margin:0 auto;margin-top:10px;width:94%;border:1px solid #ccc;border-radius:10px;-webkit-border-radius:10px;background:#ffffcc}
+#friend .more,#charts .more{margin-bottom:70px;}
+#friend .list li,#charts .list li{margin:0 auto;width:94%;padding:6px 0;display: block;overflow: hidden;zoom: 1;border-bottom:1px solid #ccc;}
+#friend .list li:last-child,#charts .list li:last-child{border-bottom:none;}
+#friend .list li .left{float:left;width:69%;}
+#friend .list li .people .head,#charts .list li .user .head{float:left;margin-right:10px;width:30px;height:30px;border-radius:50%;-webkit-border-radius:50%;overflow:hidden;}
+#friend .list li .people .head img,#charts .list li .user .head img{width:100%;}
+#friend .list li .people .name{float:left;width:70%;font-size:15px;text-align:left;line-height:30px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
+#friend .list li .right{float:right;width:31%;}
+#friend .list li .right .icon{float:right;width:30px;height:30px;display:block;background:url(../images/game/smallHouse.png) center center no-repeat;background-size:90% auto}
+#friend .list li .right .score{float:right;line-height:30px;font-size:20px;color:#d65c17;font-family: berlin_sans;}
+#friend .mine li .left .num,#charts .list li .num{float:left;margin-right:10px;width:20%;line-height:30px;font-size:20px;color:#d65c17;font-family: berlin_sans;border-right:1px solid #ccc;}
+#friend .mine li .people .name{width:40%;}
+#friend .btn{margin:0 auto;margin-top:5px;width:40%;height:40px;display:block;}
+#friend .begin{background:url(../images/game/again.png) center center no-repeat;background-size:100%;}
+#friend .footer,#charts .footer{position:fixed;bottom:0;left:0;width:100%;height:60px;background:#88e2c9}
+
+/*charts*/
+#charts{position:absolute;top:0;left:0;z-index:99999;width:100%;min-height:100%;text-align:center;background:url(../images/game/bgf.jpg) center center no-repeat;background-size:cover;display:-none}
+#charts h3{background:url(../images/game/scoreTitle.png) center center no-repeat;background-size:45% auto;}
+#charts .list li .num{margin-right:0;border-right:none;width:16%;text-align:center;}
+#charts .list li .num p{margin:0 auto;margin-top:2.5px;width:45px;height:45px;border-radius:10px;-webkit-border-radius:10px;line-height:45px;}
+#charts .list .ranking1 .num p{background:#f9cc3e}
+#charts .list .ranking2 .num p{background:#d2d2d2}
+#charts .list .ranking3 .num p{background:#c59e80;}
+#charts .list li .user,#charts .list li .score{float:left;width:28%;text-align:center;}
+#charts .list li .user .name,#charts .list li .score .name{font-size:14px;line-height:20px;width:100%;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
+#charts .list li .user .head{float:none;margin:0 auto;}
+#charts .list li .user .percent{margin-top:8px;font-size:20px;color:#d65c17;font-weight:bold;}
+#charts .list li .score p{width:100%;line-height:25px;font-size:16px;color:#d65c17;font-size:bold;overflow:hidden;}
+#charts .list li .score{text-align:right}
+#charts .list li .score .icon{margin:2.5px 0;float:right;width:20px;height:20px;display:block;overflow:hidden;}
+#charts .list li .score .house{background:url(../images/game/smallHouse.png) center center no-repeat;background-size:100% auto; }
+#charts .list li .score .people{background:url(../images/game/people.png) center center no-repeat;background-size:70% auto; }
+#charts .footer .btn{float:left;margin-top:5px;width:40%;height:50px;display:block;}
+#charts .footer .again{margin-left:4%;background:url(../images/game/again.png) center center no-repeat;background-size:95%;}
+#charts .footer .invited{margin-left:8%;background:url(../images/game/invitefriend.png) center center no-repeat;background-size:95%;}
+
+#success{position:absolute;top:0;left:0;z-index:99999;width:100%;height:100%;text-align:center;background:url(../images/game/bgf.jpg) center center no-repeat;background-size:cover;display:-none}
+#success h3{margin-top:10%;background:url(../images/game/success.png) center center no-repeat;background-size:90% auto;}
+#success .title{margin:0 auto;margin-top:8%;width:80%;height:50px;background:url(../images/game/yourScore.png) center center no-repeat;background-size:100% auto;font-size:30px;line-height:50px;}
+#success .history{padding:0px 10px;margin:5% auto;height:30px;line-height:30px;width:49%;background:#f9f5cf;font-size: 18px;color:#d65c17;border-radius:15px;-webkit-border-radius:15px;display:block;overflow:hidden;zoom:1;}
+#success .history i{margin-top:-3px;font-style:normal;display:inline-block;}
+#success .history .text{float:left;width:80%;display:block;overflow:hidden;zoom:1}
+#success .history .text em{width:40%;display:inline-block;font-size:25px;font-weight:bolder;font-family: berlin_sans;}
+#success .history .icon-small{float:left;margin-top:3px;width:26px;height:26px;display:inline-block;background:url(../images/game/smallHouse.png) center center no-repeat;background-size:80% auto;}
+#success .score{margin:0 auto;width:60%;height:76px;}
+#success .score .text{float:left;width:50%;line-height:76px;font-size:76px;color:#fff;font-family: berlin_sans;text-shadow:0px 0px 8px #d65c17;-webkit-text-shadow:0px 0px 8px #d65c17;text-align:right;}
+#success .score .icon-big{float:right;width:50%;height:76px;display:block;background:url(../images/game/house.png) center center no-repeat;background-size:65% auto;text-align:center;}
+#success .sum{margin:5%;font-size:50px;}
+#success .tips{line-height:40px;font-size:14px}
+#success img{width:40%;}
+#success .slogn{margin-top:10%}
+
+
+#tipPid { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: url(../images/game/pic_top.png) right 16px no-repeat rgba(0, 0, 0, 0.7); background-size: 110px 64px; display: none; z-index: 200000; }
+
+#tipPid .point { position: fixed; right: 18px; top: 100px; width: 260px; height: 180px; z-index: 20001; color: #fff; font-size: 15px; }
+
+#tipPid .point p { background: url(../images/game/pic_step.png) left 30px no-repeat; background-size: 15px auto; padding-bottom: 70px; position: relative; padding-left: 26px; line-height: 22px; text-align:center;font-size:20px}
+
+#tipPid .point p:last-child { background: none; }
+
+#tipPid .point p span { position: absolute; left: 0px; top: 2px; line-height: 18px; font-size: 12px; background: #ff9500; color: #fff; padding: 1px 6px; border-radius: 40px; -moz-border-radius: 40px; -ms-border-radius: 40px; -o-border-radius: 40px; -webkit-border-radius: 40px; margin-right: 4px; }
+
+
+
+.moreBtn{position:absolute;bottom:4px;width:100%;text-align:center;z-index:99}
+.moreBtn img{width:10%;}
+
+.yun{position:absolute;z-index:999999999;top:0;left:0;width:100%;display:none}
+.yun1{position:absolute;top:140px;left:10%;width:71px;height:43px;}
+.yun2{position:absolute;top:120px;right:10%;width:49px;height:29px;}
+
+.animated { -webkit-animation-duration: 1s; animation-duration: 1s; -webkit-animation-fill-mode: both; animation-fill-mode: both }
+.animated_yun { -webkit-animation-duration: 2s; animation-duration: 2s; -webkit-animation-fill-mode: both; animation-fill-mode: both }
+.infinite {-webkit-animation-iteration-count: infinite;animation-iteration-count: infinite;animation-direction:alternate;-webkit-animation-direction:alternate; }
+@-webkit-keyframes yun_left{
+	0%{-webkit-transform:translateX(-100%);transform:translateX(-100%);visibility:visible}
+	100%{-webkit-transform:translateX(0%);transform:translateX(0%)}
+}
+@keyframes yun_left{
+	0%{-webkit-transform:translateX(-100%);transform:translateX(-100%);visibility:visible}
+	100%{-webkit-transform:translateX(0%);transform:translateX(0%)}
+}
+.yun_left{-webkit-animation-name:yun_left;animation-name:yun_left}
+
+@-webkit-keyframes yun_right{
+	0%{-webkit-transform:translateX(100%);transform:translateX(100%);visibility:visible}
+	100%{-webkit-transform:translateX(0);transform:translateX(0)}
+}
+@keyframes yun_right{
+	0%{-webkit-transform:translateX(100%);transform:translateX(100%);visibility:visible}
+	100%{-webkit-transform:translateX(0);transform:translateX(0)}
+}
+.yun_right{-webkit-animation-name:yun_right;animation-name:yun_right}
+
+
+
+.elephant{position:absolute;top:50%;left:0;z-index:999999;width:100%;display:none}
+.elephant img{position:absolute;top:0;right:4%;width:30%;}
+.elephant_left{position:absolute;top:50%;left:0;z-index:999999;width:100%;display:none}
+.elephant_left img{position:absolute;top:0;left:4%;width:33%;}
+
+
+

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="CashCouponMapper" >
+  <resultMap id="BaseResultMap" type="com.alidao.basic.entity.CashCoupon" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="vaild_start_time" property="vaildStartTime" jdbcType="TIMESTAMP" />
+    <result column="vaild_end_time" property="vaildEndTime" jdbcType="TIMESTAMP" />
+    <result column="use_condition" property="useCondition" jdbcType="INTEGER" />
+    <result column="money" property="money" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="readed" property="readed" jdbcType="INTEGER" />
+    <result column="use_time" property="useTime" jdbcType="TIMESTAMP" />
+    <result column="product_id" property="productId" jdbcType="VARCHAR" />
+    <result column="create_user" property="createUser" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_user" property="updateUser" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="state" property="state" jdbcType="BIT" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="product_name" property="productName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, user_id, name, vaild_start_time, vaild_end_time, use_condition, money, status, readed, use_time, product_id, 
+    create_user, create_time, update_user, update_time, state,product_name,user_name
+  </sql>
+  <sql id="Basic_Conditions" >
+  	<![CDATA[where state = true]]>
+    <if test="userId != null">and user_id = #{userId,jdbcType=VARCHAR}</if>
+    <if test="useCondition != null">and use_condition = #{useCondition,jdbcType=INTEGER}</if>
+    <if test="money != null">and money = #{money,jdbcType=INTEGER}</if>
+    <if test="status != null">and status = #{status,jdbcType=INTEGER}</if>
+    <if test="readed != null">and readed = #{readed,jdbcType=INTEGER}</if>
+    <if test="productId != null">and product_id = #{productId,jdbcType=VARCHAR}</if>
+    <if test="productName != null">and product_name = #{productName,jdbcType=VARCHAR}</if>
+    <if test="userName != null">and user_name = #{userName,jdbcType=VARCHAR}</if>
+    <include refid="COMMON_SQL.QUERY"/>
+  </sql>
+  <select id="select" resultMap="BaseResultMap" parameterType="com.alidao.basic.entity.CashCoupon" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_cash_coupon
+    <include refid="Basic_Conditions" />
+    limit 0,1
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_cash_coupon
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <update id="delete" parameterType="com.alidao.basic.entity.CashCoupon" >
+    update t_cash_coupon set state = false
+    <include refid="Basic_Conditions" />
+  </update>
+  <update id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    update t_cash_coupon set state = false
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <insert id="insert" parameterType="com.alidao.basic.entity.CashCoupon" >
+    insert into t_cash_coupon (id, user_id, name, 
+      vaild_start_time, vaild_end_time, use_condition, 
+      money, status, readed, use_time, 
+      product_id, create_user, create_time, 
+      update_user, update_time, 
+      state,product_name,user_name)
+    values (#{id,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{vaildStartTime,jdbcType=TIMESTAMP}, #{vaildEndTime,jdbcType=TIMESTAMP}, #{useCondition,jdbcType=INTEGER}, 
+      #{money,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{readed,jdbcType=INTEGER}, #{useTime,jdbcType=TIMESTAMP}, 
+      #{productId,jdbcType=VARCHAR}, #{createUser,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateUser,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{state,jdbcType=BIT},#{productName,jdbcType=VARCHAR},#{userName,jdbcType=VARCHAR})
+  </insert>
+  <update id="update" parameterType="com.alidao.basic.entity.CashCoupon" >
+    update t_cash_coupon
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="vaildStartTime != null" >
+        vaild_start_time = #{vaildStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="vaildEndTime != null" >
+        vaild_end_time = #{vaildEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="useCondition != null" >
+        use_condition = #{useCondition,jdbcType=INTEGER},
+      </if>
+      <if test="money != null" >
+        money = #{money,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="readed != null" >
+        readed = #{readed,jdbcType=INTEGER},
+      </if>
+      <if test="useTime != null" >
+        use_time = #{useTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="productId != null" >
+        product_id = #{productId,jdbcType=VARCHAR},
+      </if>
+      <if test="createUser != null" >
+        create_user = #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUser != null" >
+        update_user = #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=BIT},
+      </if>
+      <if test="productName != null" >
+        product_name = #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <select id="queryForCount" resultType="java.lang.Long" parameterType="java.util.Map" >
+    select count(*) from t_cash_coupon
+    <include refid="Basic_Conditions" />
+    <include refid="COMMON_SQL.FUZZY" />
+  </select>
+  <select id="queryForList" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_cash_coupon
+    <include refid="Basic_Conditions" />
+    <include refid="COMMON_SQL.FUZZY" />
+    <include refid="COMMON_SQL.LIMIT" />
+  </select>
+  
+  <!-- ================================================================================= -->
+  
+  <update id="setUserStatus" parameterType="com.alidao.basic.entity.CashCoupon" >
+    update t_cash_coupon set readed = #{readed} where user_id = #{userId}
+  </update>
+  
+</mapper>
